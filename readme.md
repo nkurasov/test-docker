@@ -13,20 +13,28 @@ docker build surname-app --tag surname:1.0
 docker network create hello-net
 
 # при создании контейнеров указываем сеть, в которой они будут находиться
-docker run -d  --rm --name surname -p 8081:8080 --net hello-net surname:1.0
-docker run -d --rm --name hello -p 8082:8080 --net hello-net hello:1.0
+# также для surname указываем внешнюю директорию data, которая будет добавлена в контейнер как /usr/app/data
+docker run -d --name surname -v $(pwd)/data:/usr/app/data --net hello-net surname:1.0
+docker run -d --name hello -p 8090:8080 --net hello-net hello:1.0
 
 # проверяем, что контейнеры запустились
 docker logs surname
 docker logs hello
 
-# проверяем, что surname работает
-curl 'http://localhost:8081/surname?name=Ivan'
 # тыкаем в hello service
-curl 'http://localhost:8082/hello?name=Ivan'
+curl 'http://localhost:8090/hello?name=Ivan'
 
 # останавливаем контейнеры
 docker container stop hello surname
+
+# далее можно добавить новые имена в surnames.json файл
+
+# после запустить контейнеры (без пересоздания) и убедиться, что новые данные подгрузились
+docker container start hello surname
+
+# останавливаем и удаляем контейнеры
+docker container stop hello surname
+docker rm hello surname
 
 # сносим сеть
 docker network rm hello-net
@@ -52,7 +60,15 @@ docker-compose start
 docker-compose up --build -d
 
 # снова тыкаем в hello service
-curl 'http://localhost:8082/hello?name=Ivan'
+curl 'http://localhost:8090/hello?name=Ivan'
+
+# остановить сервисы
+docker-compose stop
+
+# поменять данные в surnames.json
+
+# снова запустить сервисы и проверить, что данные поменялись
+docker-compose start
 
 # остановить сервисы
 docker-compose stop
