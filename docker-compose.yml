@@ -1,0 +1,12 @@
+version: '3'
+services:
+  surname:
+    build: surname-app
+    ports:
+      - "8081:8080"
+  hello:
+    build: hello-app
+    ports:
+      - "8082:8080"
+    environment:
+      - SURNAME_SERVICE_URI=http://surname:8080
