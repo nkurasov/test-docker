@@ -1,5 +1,6 @@
 package ru.test.hello;
 
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -33,7 +34,11 @@ public class SurnameService {
                 .queryParam("name", name)
                 .build()
                 .toUri();
-        return template.getForObject(uri, String.class);
+        try {
+            return template.getForObject(uri, String.class);
+        } catch (RestClientException e) {
+            return null;
+        }
     }
 
     public void setProtocol(String protocol) {

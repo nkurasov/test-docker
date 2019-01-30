@@ -16,7 +16,11 @@ public class HelloService {
     @RequestMapping(path = "/hello", method = RequestMethod.GET)
     public String sayHello(String name) {
         String surname = surnameService.getSurname(name);
-        return "Hello, " + surname + " " + name + "!";
+        if (surname != null) {
+            return "Hello, " + surname + " " + name + "!";
+        }
+
+        return "Hello, " + name + "!";
     }
 
     @Autowired
