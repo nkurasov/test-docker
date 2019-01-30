@@ -44,4 +44,7 @@ docker-compose stop
 # удалить созданные контейнеры и сети
 docker-compose down
 
+# удалить созданные контейнеры, сети и образы
+docker-compose down --rmi all
+
 ```
