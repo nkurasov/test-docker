@@ -14,7 +14,6 @@ docker network create hello-net
 
 # при создании контейнеров указываем сеть, в которой они будут находиться
 docker run --rm --name surname -p 8081:8080 --net hello-net surname:1.0
-# передаём через env переменную путь к surname service (порт 8080!)
 docker run --rm --name hello -p 8082:8080 --net hello-net hello:1.0
 
 # проверяем, что surname работает
