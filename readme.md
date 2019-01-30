@@ -17,9 +17,9 @@ docker run --rm --name surname -p 8081:8080 --net hello-net surname:1.0
 docker run --rm --name hello -p 8082:8080 --net hello-net hello:1.0
 
 # проверяем, что surname работает
-curl 'http://localhost:8081/surname?name=Alina'
+curl 'http://localhost:8081/surname?name=Ivan'
 # тыкаем в hello service
-curl 'http://localhost:8082/hello?name=Alina'
+curl 'http://localhost:8082/hello?name=Ivan'
 
 ```
 
@@ -36,7 +36,7 @@ docker-compose up --no-start
 docker-compose start
 
 # снова тыкаем в hello service
-curl 'http://localhost:8082/hello?name=Alina'
+curl 'http://localhost:8082/hello?name=Ivan'
 
 # остановить сервисы
 docker-compose stop
