@@ -4,6 +4,8 @@ services:
     build: surname-app
     networks:
       - hello-net
+    volumes:
+      - ./data:/usr/app/data
   hello:
     build: hello-app
     networks:
