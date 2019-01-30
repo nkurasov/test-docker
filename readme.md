@@ -35,6 +35,9 @@ docker-compose up --no-start
 # запустить сервисы
 docker-compose start
 
+# либо одной командой 
+docker-compose up --build -d
+
 # снова тыкаем в hello service
 curl 'http://localhost:8082/hello?name=Ivan'
 
