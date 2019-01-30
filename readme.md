@@ -13,13 +13,12 @@ docker build surname-app --tag surname:1.0
 docker network create hello-net
 
 # при создании контейнеров указываем сеть, в которой они будут находиться
-docker run --rm --name surname -p 8081:8080 --net hello-net surname:1.0
-docker run --rm --name hello -p 8082:8080 --net hello-net hello:1.0
+# также для surname указываем внешнюю директорию data, которая будет добавлена в контейнер как /usr/app/data
+docker run --rm --name surname -v $PROJECT_DIR/data:/usr/app/data --net hello-net surname:1.0
+docker run --rm --name hello -p 8090:8080 --net hello-net hello:1.0
 
-# проверяем, что surname работает
-curl 'http://localhost:8081/surname?name=Ivan'
 # тыкаем в hello service
-curl 'http://localhost:8082/hello?name=Ivan'
+curl 'http://localhost:8090/hello?name=Ivan'
 
 ```
 
