@@ -39,7 +39,7 @@ docker-compose start
 docker-compose up --build -d
 
 # снова тыкаем в hello service
-curl 'http://localhost:8082/hello?name=Ivan'
+curl 'http://localhost/hello?name=Ivan'
 
 # остановить сервисы
 docker-compose stop
