@@ -12,10 +12,10 @@ public class SurnameService {
     @RequestMapping(path = "/surname", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<String> getSurname(@RequestParam("name") String name) {
-        if ("Alina".equals(name)) {
-            return ResponseEntity.ok("Putintseva");
+        if ("Ivan".equals(name)) {
+            return ResponseEntity.ok("Ivanov");
         } else if ("Nikita".equals(name)) {
-            return ResponseEntity.ok("Kurasov");
+            return ResponseEntity.ok("Petrov");
         }
 
         return ResponseEntity.badRequest().body("Unknown name: " + name);
