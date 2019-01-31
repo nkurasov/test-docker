@@ -20,6 +20,15 @@ docker run --rm -d --name hello -p 8090:8080 --net hello-net hello:1.0
 # тыкаем в hello service
 curl 'http://localhost:8090/hello?name=Ivan'
 
+# останавливаем контейнеры
+docker container stop hello surname
+
+# удаляем образы
+docker rmi hello:1.0 surname:1.0
+
+# сносим сеть
+docker network rm hello-net
+
 ```
 
 #### то же самое с docker-compose
