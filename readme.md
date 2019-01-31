@@ -28,6 +28,12 @@ curl 'http://localhost:8082/hello?name=Ivan'
 # останавливаем контейнеры
 docker container stop hello surname
 
+# сносим сеть
+docker network rm hello-net
+
+# удаляем образы
+docker rmi hello:1.0 surname:1.0
+
 ```
 
 #### то же самое с docker-compose
