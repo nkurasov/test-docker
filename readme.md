@@ -14,7 +14,7 @@ docker network create hello-net
 
 # при создании контейнеров указываем сеть, в которой они будут находиться
 # также для surname указываем внешнюю директорию data, которая будет добавлена в контейнер как /usr/app/data
-docker run --rm --name surname -v $PROJECT_DIR/data:/usr/app/data --net hello-net surname:1.0
+docker run --rm --name surname -v $(pwd)/data:/usr/app/data --net hello-net surname:1.0
 docker run --rm --name hello -p 8090:8080 --net hello-net hello:1.0
 
 # тыкаем в hello service
