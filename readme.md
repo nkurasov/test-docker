@@ -50,3 +50,13 @@ docker-compose down
 docker-compose down --rmi all
 
 ```
+
+##### дополнительно
+
+```bash
+
+# в процессе пересборки образов старые образы не удаляются, у них стирается tag
+# удалить все untagged images
+docker image prune
+
+```
