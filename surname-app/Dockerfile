@@ -1,5 +1,8 @@
 FROM openjdk:8-jre-alpine
 
-COPY target/surname.jar /usr/app/surname.jar
+LABEL version="0.1"
 
-CMD ["java", "-jar", "/usr/app/surname.jar"]
+WORKDIR /usr/app
+COPY target/surname.jar .
+
+CMD ["java", "-jar", "surname.jar"]

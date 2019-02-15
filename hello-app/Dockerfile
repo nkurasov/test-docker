@@ -1,7 +1,10 @@
 FROM openjdk:8-jre-alpine
 
-COPY target/hello.jar /usr/app/hello.jar
+LABEL version="0.1"
+
+WORKDIR /usr/app
+COPY target/hello.jar .
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "/usr/app/hello.jar"]
+CMD ["java", "-jar", "hello.jar"]
